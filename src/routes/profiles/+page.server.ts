@@ -69,14 +69,16 @@ export const actions = {
     const data = await request.formData();
     const db = createPool({ connectionString: POSTGRES_URL })
     const client = await db.connect();
+    console.log(data);
 
     const email = data.get('email');
 		const name = data.get('name');
+		const id = data.get('id');
 
     const updateUser = await client.sql`
     UPDATE names
     SET email = ${email}, name = ${name}
-    WHERE     ;`
+    WHERE   id = ${id};`
 	
 		return { success: true };
 	},
