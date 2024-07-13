@@ -38,11 +38,7 @@
             name="square"
           />
         </div>
-        <!-- <div class="w-full px-3 mb-6 md:mb-0">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
-              Email
-            </label>
-          </div> -->
+      
         <button
           type="submit"
           class="bg-green-500 hover:bg-blue-700 text-white font-bold mt-5 ml-2 px-2 py-2 rounded"
@@ -52,8 +48,6 @@
       </div>
     </form>
     {#if form?.success}
-      <!-- this message is ephemeral; it exists because the page was rendered in
-		   response to a form submission. it will vanish if the user reloads -->
       <p class="pt-2 text-green-400 font-semibold">
         Bounty was deployed successfully: <a
           class="text-indigo-500 underline font-semibold"
@@ -61,8 +55,8 @@
           href={`https://whatsonchain.com/tx/${form?.txid}`}>Trasaction Link</a
         >!
       </p>
-      {:else if form?.deployed === false}
-      <p >{form?.txid}</p>
+      {:else if !form?.success && form?.txid} 
+      <p class="pt-2 text-red-600 font-semibold">{form?.txid}</p>
     {/if}
   </div>
 
@@ -88,11 +82,6 @@
             name="root"
           />
         </div>
-        <!-- <div class="w-full px-3 mb-6 md:mb-0">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
-              Email
-            </label>
-          </div> -->
         <button
           type="submit"
           class="bg-red-500 hover:bg-blue-700 text-white font-bold mt-5 ml-2 px-2 py-2 rounded"
@@ -102,8 +91,6 @@
       </div>
     </form>
     {#if form?.success}
-      <!-- this message is ephemeral; it exists because the page was rendered in
-		   response to a form submission. it will vanish if the user reloads -->
       <p class="pt-2 text-green-600 font-semibold">
         Bounty was unlocked successfully: <a
           class="text-indigo-500 underline font-semibold"
@@ -111,9 +98,10 @@
           href={`https://whatsonchain.com/tx/${form?.txid}`}>Trasaction Link</a
         >!
       </p>
-    {:else if form?.success === false}
+      {/if}
+    {#if form?.success === false}
       <p class="pt-2 text-red-600 font-semibold">
-        {form?.txid} 
+        {form?.txid} c
       </p>
     {/if}
   </div>

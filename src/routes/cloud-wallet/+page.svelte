@@ -39,11 +39,6 @@ export let form;
         />
     
       </div>
-      <!-- <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
-              Email
-            </label>
-          </div> -->
       <button
         type="submit"
         class="bg-yellow-500 hover:bg-blue-700 text-white font-bold mt-5 ml-2 px-2 rounded "
@@ -95,11 +90,7 @@ export let form;
         />
     
       </div>
-      <!-- <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
-              Email
-            </label>
-          </div> -->
+      
           <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
             <label
               class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -131,18 +122,20 @@ export let form;
         />
     
       </div>
-
-      <button
+      <button 
         type="submit"
-        class="bg-yellow-500 hover:bg-blue-700 text-white font-bold mt-5 ml-2 px-2 rounded "
+        class="bg-blue-700 hover:bg-yellow-500 text-white font-bold mt-6 ml-2 px-16 rounded "
       >
         Pay
       </button>
     </div>
   </form>
   {#if form?.success}
-    <!-- this message is ephemeral; it exists because the page was rendered in
-		   response to a form submission. it will vanish if the user reloads -->
     <p class="pt-2">The payment was successful. Here is your <a href="https://whatsonchain.com/tx/{form?.payment}">transaction</a>!</p>
+    <!-- {/if} -->
+    {:else if !form?.success && form?.error}
+    <p class="pt-2 text-red-600 font-semibold">
+      {form?.error} 
+    </p>
   {/if}
 </div>
